@@ -1,0 +1,180 @@
+:root {
+      --sv-blue:   #0052A5;
+      --sv-gold:   #F4C430;
+      --sv-red:    #C8102E;
+      --sv-green:  #2D7D46;
+      --sv-cream:  #FFF8E7;
+      --sv-dark:   #0E1A2B;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background-color: var(--sv-dark);
+      color: var(--sv-cream);
+      overflow-x: hidden;
+    }
+
+    /* ── Pixel / retro grain overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='white' opacity='.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Animated hero gradient ── */
+    .hero-bg {
+      background: linear-gradient(135deg, #0E1A2B 0%, #0052A5 45%, #1a3a6b 70%, #0E1A2B 100%);
+      background-size: 300% 300%;
+      animation: gradShift 8s ease infinite;
+    }
+    @keyframes gradShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── Pokéball deco ── */
+    .pokeball-deco {
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      border: 6px solid rgba(244,196,48,.15);
+      position: absolute;
+      right: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: spin 20s linear infinite;
+    }
+    .pokeball-deco::after {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      border: 4px solid rgba(244,196,48,.08);
+      animation: spinRev 14s linear infinite;
+    }
+    @keyframes spin    { to { transform: translateY(-50%) rotate(360deg); } }
+    @keyframes spinRev { to { transform: rotate(-360deg); } }
+
+    /* ── Title font ── */
+    .title-font { font-family: 'Righteous', cursive; }
+
+    /* ── Section title underline ── */
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: var(--sv-gold);
+      border-radius: 2px;
+      margin: 10px auto 0;
+    }
+
+    /* ── Feature cards ── */
+    .feature-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(244,196,48,.18);
+      border-radius: 20px;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(244,196,48,.12);
+      border-color: rgba(244,196,48,.45);
+    }
+
+    /* ── Download button ── */
+    .dl-card {
+      background: rgba(0,82,165,.25);
+      border: 2px solid rgba(0,82,165,.6);
+      border-radius: 16px;
+      transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .dl-card:hover {
+      transform: translateY(-4px);
+      background: rgba(0,82,165,.45);
+      box-shadow: 0 12px 32px rgba(0,82,165,.4);
+    }
+
+    /* ── Artist card ── */
+    .artist-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 20px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .artist-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(244,196,48,.1);
+    }
+    .artist-avatar {
+      border: 3px solid var(--sv-gold);
+      transition: transform .2s;
+    }
+    .artist-card:hover .artist-avatar {
+      transform: scale(1.08);
+    }
+
+    /* ── YT embed frame ── */
+    .yt-wrapper {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 3px solid rgba(244,196,48,.3);
+      box-shadow: 0 0 60px rgba(244,196,48,.08);
+    }
+
+    /* ── Gold badge ── */
+    .gold-badge {
+      background: var(--sv-gold);
+      color: var(--sv-dark);
+      font-weight: 800;
+      border-radius: 9999px;
+      padding: 4px 14px;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: rgba(14,26,43,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(244,196,48,.12);
+    }
+
+    /* ── Flag stripe ── */
+    .flag-stripe {
+      background: linear-gradient(90deg, var(--sv-blue) 33.3%, white 33.3% 66.6%, var(--sv-blue) 66.6%);
+      height: 5px;
+    }
+
+    /* ── Wave divider ── */
+    .wave { display: block; width: 100%; }
+
+    /* ── Glow text ── */
+    .text-glow {
+      text-shadow: 0 0 30px rgba(244,196,48,.5), 0 0 60px rgba(244,196,48,.25);
+    }
+
+    /* ── IG gradient icon ── */
+    .ig-icon {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
